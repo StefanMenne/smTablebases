@@ -11,6 +11,8 @@
 - ♟️ Includes a board for entering and checking positions
 - ✅ Very easy to use
 
+➡️ **[Download here](../../releases)**
+
 ---
 
 # Documentation
