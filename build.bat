@@ -28,8 +28,8 @@ if exist "%DIST_DIR%\debug" (
 
 mkdir "%DIST_DIR%\debug"
 mkdir "%DIST_DIR%\release"
-mkdir "%DIST_DIR%\final"
-mkdir "%DIST_DIR%\final_linux"
+mkdir "%DIST_DIR%\smTablebases_win_x64"
+mkdir "%DIST_DIR%\smTablebases_linux_x64"
 ::mkdir "%DIST_DIR%\final_aot"
 
 
@@ -46,11 +46,11 @@ if %errorlevel% neq 0 goto error
 xcopy "smTablebases\smTablebases\bin\Release\net10.0\*.*" "%DIST_DIR%\release\" /Y /S >nul
 
 echo [3/4] Build RELEASE FINAL TRIMMED (Windows x64)...
-dotnet publish %APP_PROJ% -c Release -r win-x64 --property WarningLevel=0 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true -p:DefineConstants="RELEASE%%3BRELEASEFINAL" -o "%DIST_DIR%\final"
+dotnet publish %APP_PROJ% -c Release -r win-x64 --property WarningLevel=0 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true -p:DefineConstants="RELEASE%%3BRELEASEFINAL" -o "%DIST_DIR%\smTablebases_win_x64"
 if %errorlevel% neq 0 goto error
 
 echo [4/4] Build RELEASE FINAL TRIMMED (Linux x64)...
-dotnet publish %APP_PROJ% -c Release -r linux-x64 --property WarningLevel=0 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true -p:DefineConstants="RELEASE%%3BRELEASEFINAL" -o "%DIST_DIR%\final_linux"
+dotnet publish %APP_PROJ% -c Release -r linux-x64 --property WarningLevel=0 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true -p:DefineConstants="RELEASE%%3BRELEASEFINAL" -o "%DIST_DIR%\smTablebases_linux_x64"
 if %errorlevel% neq 0 goto error
 
 :: Build RELEASE FINAL TRIMMED (macOS x64)...
