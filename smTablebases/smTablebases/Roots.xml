@@ -1,0 +1,11 @@
+<Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
+    <Application>
+        <Assembly Name="smTablebases" Dynamic="Required All" />
+        <Assembly Name="LC" Dynamic="Required All" />
+        <Assembly Name="TBacc" Dynamic="Required All" />
+
+        <Assembly Name="Avalonia.Base" Dynamic="Required All" />
+        <Assembly Name="Avalonia.Controls" Dynamic="Required All" />
+        <Assembly Name="Avalonia.Markup.Xaml" Dynamic="Required All" />
+    </Application>
+</Directives>

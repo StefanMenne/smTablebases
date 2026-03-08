@@ -1,0 +1,160 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="smTablebases.App"
+             RequestedThemeVariant="Dark">
+
+    <Application.Styles>
+        <FluentTheme />
+
+        <!-- ===== Global Professional Dark Theme Styles ===== -->
+
+        <!-- Window background -->
+        <Style Selector="Window">
+            <Setter Property="Background" Value="#1e1e2e"/>
+            <Setter Property="FontFamily" Value="Segoe UI, Inter, sans-serif"/>
+        </Style>
+
+        <!-- Menu styling -->
+        <Style Selector="Menu">
+            <Setter Property="Background" Value="#181825"/>
+        </Style>
+        <Style Selector="MenuItem">
+            <Setter Property="Foreground" Value="#cdd6f4"/>
+        </Style>
+        <Style Selector="MenuItem:pointerover /template/ Border#PART_LayoutRoot">
+            <Setter Property="Background" Value="#313244"/>
+        </Style>
+
+        <!-- TabControl -->
+        <Style Selector="TabControl">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+        <Style Selector="TabItem">
+            <Setter Property="Foreground" Value="#a6adc8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="16,8"/>
+        </Style>
+        <Style Selector="TabItem:selected">
+            <Setter Property="Foreground" Value="#89b4fa"/>
+        </Style>
+        <Style Selector="TabItem:pointerover">
+            <Setter Property="Foreground" Value="#b4befe"/>
+        </Style>
+
+        <!-- Buttons -->
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#313244"/>
+            <Setter Property="Foreground" Value="#cdd6f4"/>
+            <Setter Property="BorderBrush" Value="#45475a"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+        <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#45475a"/>
+            <Setter Property="Foreground" Value="#cdd6f4"/>
+            <Setter Property="BorderBrush" Value="#585b70"/>
+        </Style>
+        <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#585b70"/>
+        </Style>
+
+        <!-- TextBox -->
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="#313244"/>
+            <Setter Property="Foreground" Value="#cdd6f4"/>
+            <Setter Property="BorderBrush" Value="#45475a"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="CaretBrush" Value="#89b4fa"/>
+        </Style>
+        <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+            <Setter Property="BorderBrush" Value="#89b4fa"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+
+        <!-- TextBlock -->
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground" Value="#cdd6f4"/>
+        </Style>
+
+        <!-- SelectableTextBlock -->
+        <Style Selector="SelectableTextBlock">
+            <Setter Property="Foreground" Value="#cdd6f4"/>
+        </Style>
+
+        <!-- Label -->
+        <Style Selector="Label">
+            <Setter Property="Foreground" Value="#bac2de"/>
+        </Style>
+
+        <!-- ListBox -->
+        <Style Selector="ListBox">
+            <Setter Property="Background" Value="#181825"/>
+            <Setter Property="BorderBrush" Value="#313244"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="6"/>
+        </Style>
+        <Style Selector="ListBoxItem">
+            <Setter Property="Foreground" Value="#cdd6f4"/>
+        </Style>
+        <Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#45475a"/>
+        </Style>
+        <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#313244"/>
+        </Style>
+
+        <!-- CheckBox -->
+        <Style Selector="CheckBox">
+            <Setter Property="Foreground" Value="#cdd6f4"/>
+        </Style>
+
+        <!-- RadioButton -->
+        <Style Selector="RadioButton">
+            <Setter Property="Foreground" Value="#cdd6f4"/>
+        </Style>
+
+        <!-- ProgressBar -->
+        <Style Selector="ProgressBar">
+            <Setter Property="Background" Value="#313244"/>
+            <Setter Property="Foreground" Value="#89b4fa"/>
+        </Style>
+
+        <!-- ComboBox -->
+        <Style Selector="ComboBox">
+            <Setter Property="Background" Value="#313244"/>
+            <Setter Property="Foreground" Value="#cdd6f4"/>
+            <Setter Property="BorderBrush" Value="#45475a"/>
+            <Setter Property="CornerRadius" Value="4"/>
+        </Style>
+
+        <!-- ScrollViewer -->
+        <Style Selector="ScrollViewer">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+
+        <!-- Separator in menus -->
+        <Style Selector="Separator">
+            <Setter Property="Background" Value="#45475a"/>
+        </Style>
+
+        <!-- DockPanel backgrounds for sections -->
+        <Style Selector="Border">
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+
+    </Application.Styles>
+
+    <Application.Resources>
+        <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#1e1e2e"/>
+        <SolidColorBrush x:Key="CardBackgroundBrush" Color="#181825"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="#89b4fa"/>
+        <SolidColorBrush x:Key="SubtleTextBrush" Color="#a6adc8"/>
+        <SolidColorBrush x:Key="TextBrush" Color="#cdd6f4"/>
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#313244"/>
+        <SolidColorBrush x:Key="BorderColorBrush" Color="#45475a"/>
+    </Application.Resources>
+</Application>

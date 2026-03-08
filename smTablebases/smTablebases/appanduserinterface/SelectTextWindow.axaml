@@ -1,0 +1,14 @@
+<Window x:Class="smTablebases.SelectTextWindow"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="" Height="300" Width="300"
+        Background="#1e1e2e">
+    <DockPanel>
+ <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
+<Button DockPanel.Dock="Left" Margin="5" Height="30" Width="100" Name="buttonOk" Click="buttonOk_Click">OK</Button>
+<Button DockPanel.Dock="Right" Margin="5" Height="30" Width="100" Name="buttonCancel" Click="buttonCancel_Click">Cancel</Button>
+</DockPanel>
+<ListBox Name="listBox">
+</ListBox>
+    </DockPanel>
+</Window>

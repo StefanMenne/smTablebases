@@ -1,0 +1,144 @@
+# .editorconfig – C# 14 / .NET 10
+
+root = true
+
+# ──────────────────────────────────────────────
+# All files: Basics
+# ──────────────────────────────────────────────
+[*]
+charset                  = utf-8
+end_of_line              = crlf
+indent_style             = space
+indent_size              = 4
+trim_trailing_whitespace = true
+insert_final_newline     = true
+
+# ──────────────────────────────────────────────
+# C# Files
+# ──────────────────────────────────────────────
+[*.cs]
+
+# Language version explicit (prevents Rider/Roslyn from enforcing newer features)
+csharp_language_version = preview
+
+
+# ══════════════════════════════════════════════
+# CODE STYLE – Braces & Whitespace
+# ══════════════════════════════════════════════
+
+# Always use braces (no if without {})
+csharp_prefer_braces                                          = true : suggestion
+
+# New line for opening brace (Allman style)
+csharp_new_line_before_open_brace                             = all
+csharp_new_line_before_else                                   = true
+csharp_new_line_before_catch                                  = true
+csharp_new_line_before_finally                                = true
+csharp_new_line_before_members_in_object_initializers         = true
+csharp_new_line_before_members_in_anonymous_types             = true
+
+# Whitespace
+csharp_space_after_cast                                       = false
+csharp_space_before_colon_in_inheritance_clause               = true
+csharp_space_after_colon_in_inheritance_clause                = true
+csharp_space_around_binary_operators                          = before_and_after
+csharp_space_between_method_declaration_parameter_list_parentheses = false
+csharp_space_between_method_call_parameter_list_parentheses   = false
+csharp_space_between_parentheses                              = false
+
+# Indentation
+csharp_indent_case_contents                                   = true
+csharp_indent_switch_labels                                   = true
+csharp_indent_labels                                          = flush_left
+
+
+dotnet_diagnostic.IDE0010.severity = none   # add missing switch cases
+dotnet_diagnostic.IDE0032.severity = none   # use auto-property
+dotnet_diagnostic.IDE0059.severity = none   # unnecessary value assignment
+dotnet_diagnostic.IDE0034.severity = none   # simplify default expression
+dotnet_diagnostic.IDE0090.severity = none   # use new() instead of new Type()
+dotnet_diagnostic.IDE0028.severity = none   # simplify collection initialization
+dotnet_diagnostic.IDE0300.severity = none   # use collection expression
+dotnet_diagnostic.IDE0301.severity = none   # use collection expression
+dotnet_diagnostic.IDE0302.severity = none   # use collection expression
+dotnet_diagnostic.IDE0303.severity = none   # use collection expression
+dotnet_diagnostic.IDE0304.severity = none   # use collection expression
+dotnet_diagnostic.IDE0305.severity = none   # use collection expression
+
+# "var" vs. explicit types – we enforce nothing
+csharp_style_var_for_built_in_types                           = false : none
+csharp_style_var_when_type_is_apparent                        = false : none
+csharp_style_var_elsewhere                                    = false : none
+dotnet_diagnostic.IDE0007.severity = none   # prefer var
+dotnet_diagnostic.IDE0008.severity = none   # prefer explicit type
+
+# Pattern matching – suggestions stay silent
+dotnet_diagnostic.IDE0019.severity = none   # as + null-check → is
+dotnet_diagnostic.IDE0020.severity = none   # is-check with cast
+dotnet_diagnostic.IDE0038.severity = none   # is-expression
+dotnet_diagnostic.IDE0083.severity = none   # not-pattern
+
+# Expression-bodied members – no enforcement
+csharp_style_expression_bodied_methods                        = false : none
+csharp_style_expression_bodied_constructors                   = false : none
+csharp_style_expression_bodied_operators                      = false : none
+csharp_style_expression_bodied_properties                     = true  : none
+csharp_style_expression_bodied_indexers                       = true  : none
+csharp_style_expression_bodied_accessors                      = true  : none
+dotnet_diagnostic.IDE0021.severity = none
+dotnet_diagnostic.IDE0022.severity = none
+dotnet_diagnostic.IDE0023.severity = none
+dotnet_diagnostic.IDE0024.severity = none
+dotnet_diagnostic.IDE0025.severity = none
+dotnet_diagnostic.IDE0071.severity = none   # simplify string interpolation
+dotnet_diagnostic.IDE0075.severity = none   # simplify conditional expression
+dotnet_diagnostic.IDE0029.severity = none   # use null-coalescing expression
+dotnet_diagnostic.IDE0030.severity = none   # use null-coalescing expression
+dotnet_diagnostic.IDE0031.severity = none   # use null propagation
+dotnet_diagnostic.CS8600.severity = warning  # null → non-nullable
+dotnet_diagnostic.CS8601.severity = warning  # possible null assignment
+dotnet_diagnostic.CS8602.severity = warning  # dereference of possibly null
+dotnet_diagnostic.CS8603.severity = warning  # possible null return value
+dotnet_diagnostic.CS8604.severity = warning  # null as non-nullable argument
+dotnet_diagnostic.CS8618.severity = warning  # non-nullable not initialized
+dotnet_diagnostic.CS8625.severity = warning  # null literal → non-nullable
+dotnet_diagnostic.CS0019.severity = error   # operator on incompatible types
+dotnet_diagnostic.CS0029.severity = error   # implicit conversion not possible
+dotnet_diagnostic.CS0103.severity = error   # name not in scope
+dotnet_diagnostic.CS0106.severity = error   # invalid modifier
+dotnet_diagnostic.CS0119.severity = error   # invalid use of type/namespace
+dotnet_diagnostic.CS0161.severity = error   # not all paths return a value
+dotnet_diagnostic.CS0165.severity = error   # use of uninitialized variable
+dotnet_diagnostic.CS0246.severity = error   # type not found
+dotnet_diagnostic.CS0501.severity = error   # member requires a body
+dotnet_diagnostic.CS0535.severity = error   # interface not implemented
+dotnet_diagnostic.CS1998.severity = warning # async without await (warning is enough)
+dotnet_diagnostic.CS4014.severity = warning # unawaited task
+
+
+#
+# manually added
+#
+
+resharper_check_namespace_highlighting = none                           
+resharper_redundant_default_member_initializer_highlighting = none      
+resharper_redundant_name_qualifier_highlighting = none                  
+resharper_redundant_to_string_call_highlighting = none                  
+resharper_enforce_if_statement_braces_highlighting = none                
+resharper_enforce_foreach_statement_braces_highlighting = none          
+resharper_enforce_for_statement_braces_highlighting = none
+
+
+# ──────────────────────────────────────────────
+# XML / JSON / YAML – 2-space indentation
+# ──────────────────────────────────────────────
+[*.{xml,csproj,props,targets,config,json,yml,yaml}]
+indent_size = 2
+
+# ──────────────────────────────────────────────
+# Markdown
+# ──────────────────────────────────────────────
+[*.md]
+trim_trailing_whitespace = false
+
+

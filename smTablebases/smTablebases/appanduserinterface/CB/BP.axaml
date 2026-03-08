@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="smTablebases.Chessboard.BP"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="50" d:DesignWidth="50">
+    <Viewbox Stretch="Uniform">
+        <Canvas Width="200" Height="200" Background="Transparent" Margin="0,80,0,20">
+
+            <Path Fill="Black"
+                  Stroke="White"
+                  StrokeThickness="2"
+                  Data="M 50 178 C 48 183, 47 188, 47 192 L 153 192 C 153 188, 152 183, 150 178 Z" />
+
+            <Rectangle Canvas.Left="43"
+                       Canvas.Top="192"
+                       Width="114"
+                       Height="8"
+                       RadiusX="3"
+                       RadiusY="3"
+                       Fill="Black"
+                       Stroke="White"
+                       StrokeThickness="2" />
+
+            <Path Fill="Black"
+                  Stroke="White"
+                  StrokeThickness="2"
+                  Data="M 50 177.5 c 20 -30 30 -60 30 -90 a 10 10 0 1 1 0 -20 a 35 35 0 1 1 40 0 a 10 10 0 1 1 0 20 c 0 30 10 60 30 90" />
+        </Canvas>
+    </Viewbox>
+</UserControl>

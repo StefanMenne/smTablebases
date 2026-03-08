@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smTablebases", "smTablebases\smTablebases.csproj", "{5D2BC57A-07A8-4B67-929C-0F097733287F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LC", "LC\LC.csproj", "{43FCFD80-D531-4C73-A775-02225C3F10CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBacc", "TBacc\TBacc.csproj", "{B69FCAD8-0ECD-4910-A34D-0D4DA8C50819}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D2BC57A-07A8-4B67-929C-0F097733287F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D2BC57A-07A8-4B67-929C-0F097733287F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D2BC57A-07A8-4B67-929C-0F097733287F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D2BC57A-07A8-4B67-929C-0F097733287F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43FCFD80-D531-4C73-A775-02225C3F10CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43FCFD80-D531-4C73-A775-02225C3F10CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43FCFD80-D531-4C73-A775-02225C3F10CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43FCFD80-D531-4C73-A775-02225C3F10CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B69FCAD8-0ECD-4910-A34D-0D4DA8C50819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B69FCAD8-0ECD-4910-A34D-0D4DA8C50819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B69FCAD8-0ECD-4910-A34D-0D4DA8C50819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B69FCAD8-0ECD-4910-A34D-0D4DA8C50819}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

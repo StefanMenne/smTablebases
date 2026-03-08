@@ -1,0 +1,14 @@
+﻿<Window x:Class="smTablebases.SelectMaxMovePosWindow"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Select the highest dtm position from ..." Height="400" Width="500"
+        Background="#1e1e2e">
+	<DockPanel LastChildFill="False">
+		<ListBox Name="listBox" DockPanel.Dock="Left" Width="200">
+		</ListBox>
+		<DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
+			<Button Margin="10" DockPanel.Dock="Left" Width="100" Click="ButtonOk_Click">OK</Button>
+			<Button Margin="10" DockPanel.Dock="Right" Width="100" Click="ButtonCancel_Click">Cancel</Button>
+		</DockPanel>
+	</DockPanel>
+</Window>

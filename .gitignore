@@ -1,0 +1,55 @@
+# Build output
+**/bin/
+**/obj/
+
+# IDE - JetBrains Rider
+.idea/
+
+# IDE - Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# IDE - Visual Studio Code
+.vscode/
+
+# IDE - Visual Studio for Mac
+.DS_Store
+
+# NuGet
+*.nupkg
+*.snupkg
+**/packages/
+!**/packages/build/
+nuget.config
+
+# Publish output
+**/publish/
+
+# MSBuild
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+
+# Logs
+*.log
+
+# Avalonia specific
+**/*.g.cs
+
+# User-specific settings
+*.DotSettings.user

@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="smTablebases.UserControlCb"
+				xmlns="https://github.com/avaloniaui"
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+				xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+				xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+				xmlns:local="clr-namespace:smTablebases"
+                xmlns:chsbrd="clr-namespace:smTablebases.Chessboard"
+				mc:Ignorable="d"
+				d:DesignHeight="300" d:DesignWidth="300">
+	<DockPanel LastChildFill="True" Margin="0,10,0,0">
+		<DockPanel DockPanel.Dock="Right" Width="300" Margin="10,0,10,0">
+			<DockPanel DockPanel.Dock="Top" LastChildFill="False">
+				<Button Click="ButtonBoardClear_Click" DockPanel.Dock="Left" ToolTip.Tip="Clear Board">Clear</Button>
+				<!-- Does not work properly ; taken out for now
+                <Button Click="ButtonGetPos_Click" DockPanel.Dock="Left" Margin="10,0,0,0" ToolTip.Tip="Get Pos with maximum DTM">Get Pos</Button>
+				-->
+				<Button Name="ButtonDoMove" Click="ButtonDoMove_Click" DockPanel.Dock="Left" Margin="10,0,0,0" IsEnabled="False" ToolTip.Tip="Do best move">Move!</Button>
+				<Button Name="ButtonForward" Click="ButtonForward_Click" DockPanel.Dock="Right" >&gt;</Button>
+				<Button Name="ButtonBackward" Click="ButtonBackward_Click" DockPanel.Dock="Right" Margin="0,0,10,0">&lt;</Button>
+			</DockPanel>
+			<DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="0,10,5,0">
+				<CheckBox Name="CheckBoxWtm" Margin="0,0,10,0" IsCheckedChanged="CheckBoxWtm_IsCheckedChanged" VerticalAlignment="Center" IsChecked="True">White to move</CheckBox>
+				<CheckBox Name="CheckBoxAutoResponse" VerticalAlignment="Center" Margin="0,0,0,0">Auto Response</CheckBox>
+			</DockPanel>
+			<DockPanel DockPanel.Dock="Top" LastChildFill="True" Margin="0,10,0,10">
+				<CheckBox Name="CheckBoxEnPassant" VerticalAlignment="Center" Margin="0,0,10,0" IsEnabled="False" IsCheckedChanged="CheckBoxEnPassant_IsCheckedChanged">En Passant</CheckBox>
+				<ComboBox Name="ComboBoxEnPassant" IsEnabled="False" SelectionChanged="ComboBoxEnPassant_SelectionChanged"></ComboBox>
+			</DockPanel>
+			<TextBlock Name="TextBlockBoardInfo" DockPanel.Dock="Top"></TextBlock>
+			<ListBox DockPanel.Dock="Top" MinHeight="100" Margin="0,0,0,10" Name="ListBoxMoves" DoubleTapped="ListBoxMoves_DoubleTapped" >
+				<ListBox.ItemTemplate>
+					<DataTemplate DataType="local:MoveInfo">
+						<StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+							<TextBlock FontSize="14" Width="60" Text="{Binding MvString}"/>
+							<TextBlock FontSize="14" Width="120" Text="{Binding Info}"/>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+		</DockPanel>
+        <chsbrd:ChB x:Name="Cb" ></chsbrd:ChB>
+	</DockPanel>
+
+</UserControl>

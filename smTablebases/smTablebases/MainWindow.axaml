@@ -1,0 +1,247 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:smTablebases"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        x:Class="smTablebases.MainWindow"
+        Title="smTablebases" Height="450" Width="1000"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="450"
+        x:DataType="local:MainWindow"
+        Closing="MainWindow_WindowClosing"
+        Closed="MainWindow_Closed">
+    <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File" Name="MenuItemFile">
+                <MenuItem Header="Memory usage infos"  Name="MenuItemMemoryUsage" Click="MenuItemMemoryUsage_Click"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Exit"  Name="MenuItemExit" Click="MenuItemExit_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Compression" Name="MenuItemCompression" SubmenuOpened="MenuItemCompression_SubmenuOpened" >
+                <MenuItem Header="High (LC Level 1)" Name="MenuItemCompressionProfileHigh" ToggleType="Radio" Click="MenuItemCompressionProfileHigh_OnClick"></MenuItem>
+                <MenuItem Header="Medium (LC Level 4)" Name="MenuItemCompressionProfileMedium" ToggleType="Radio" Click="MenuItemCompressionProfileMedium_OnClick"></MenuItem>
+                <MenuItem Header="Low (Brotli)" Name="MenuItemCompressionProfileLow" ToggleType="Radio" Click="MenuItemCompressionProfileLow_OnClick"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Advanced compression settings" Name="MenuItemAdvancedCompressionSettings" SubmenuOpened="MenuItemAdvancedCompressionSettings_SubmenuOpened">
+                    <MenuItem Header="Recalc results" Name="MenuItemCompressRecalcRes" SubmenuOpened="MenuItemCompressRecalcRes_SubmenuOpened" />
+                    <Separator/>
+                    <MenuItem Header="LC settings" Name="MenuItemLcSettings" />
+                    <MenuItem Header="Deflate Settings" Name="MenuItemDeflateSettings">
+                        <MenuItem Header="Compression Level" Name="MenuItemDeflateCompressionLevel" SubmenuOpened="MenuItemDeflateCompressionLevel_SubmenuOpened"/>
+                    </MenuItem>
+                    <MenuItem Header="Brotli Settings" Name="MenuItemBrotliSettings">
+                        <MenuItem Header="Quality" Name="MenuItemBrotliQuality" SubmenuOpened="MenuItemBrotliQuality_SubmenuOpened">
+                            <MenuItem Header="0 (no compression)" ToggleType="Radio" Click="MenuItemBrotliQuality_Click" ><MenuItem.Tag><sys:Int32>0</sys:Int32></MenuItem.Tag></MenuItem>
+                            <MenuItem Header="1" ToggleType="Radio" Click="MenuItemBrotliQuality_Click"><MenuItem.Tag><sys:Int32>1</sys:Int32></MenuItem.Tag></MenuItem>
+                            <MenuItem Header="2" ToggleType="Radio" Click="MenuItemBrotliQuality_Click"><MenuItem.Tag><sys:Int32>2</sys:Int32></MenuItem.Tag></MenuItem>
+                            <MenuItem Header="3" ToggleType="Radio" Click="MenuItemBrotliQuality_Click"><MenuItem.Tag><sys:Int32>3</sys:Int32></MenuItem.Tag></MenuItem>
+                            <MenuItem Header="4" ToggleType="Radio" Click="MenuItemBrotliQuality_Click"><MenuItem.Tag><sys:Int32>4</sys:Int32></MenuItem.Tag></MenuItem>
+                            <MenuItem Header="5" ToggleType="Radio" Click="MenuItemBrotliQuality_Click"><MenuItem.Tag><sys:Int32>5</sys:Int32></MenuItem.Tag></MenuItem>
+                            <MenuItem Header="6" ToggleType="Radio" Click="MenuItemBrotliQuality_Click"><MenuItem.Tag><sys:Int32>6</sys:Int32></MenuItem.Tag></MenuItem>
+                            <MenuItem Header="7" ToggleType="Radio" Click="MenuItemBrotliQuality_Click"><MenuItem.Tag><sys:Int32>7</sys:Int32></MenuItem.Tag></MenuItem>
+                            <MenuItem Header="8" ToggleType="Radio" Click="MenuItemBrotliQuality_Click"><MenuItem.Tag><sys:Int32>8</sys:Int32></MenuItem.Tag></MenuItem>
+                            <MenuItem Header="9" ToggleType="Radio" Click="MenuItemBrotliQuality_Click"><MenuItem.Tag><sys:Int32>9</sys:Int32></MenuItem.Tag></MenuItem>
+                            <MenuItem Header="10" ToggleType="Radio" Click="MenuItemBrotliQuality_Click"><MenuItem.Tag><sys:Int32>10</sys:Int32></MenuItem.Tag></MenuItem>
+                            <MenuItem Header="11" ToggleType="Radio" Click="MenuItemBrotliQuality_Click"><MenuItem.Tag><sys:Int32>11</sys:Int32></MenuItem.Tag></MenuItem>
+                        </MenuItem>
+                    </MenuItem>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Debug" Name="MenuItemDebug">
+                <MenuItem Header="Log Now">
+                    <MenuItem Header="Show Several Infos" Name="MenuItemShowSeveralInfos" Click="MenuItemShowSeveralInfos_Click"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Log during Calculation" Name="MenuItemLogDuringCalculation">
+                    <MenuItem Header="Print result counts" ToggleType="CheckBox" Name="MenuItemPrintCount" Click="MenuItemPrintCount_Click"></MenuItem>
+                    <MenuItem Header="Print result indices count" ToggleType="CheckBox" Name="MenuItemResIndexCountPrint" Click="MenuItemResIndexCountPrint_Click"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="File" Name="MenuItemDebugFile">
+                    <MenuItem Name="MenuItemTxtOut" Header="Write Statistic-File" Click="MenuItemTxtOut_Click"></MenuItem>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Verify LC compression (1 Thread!)" ToggleType="CheckBox" Name="MenuItemVerifyLcCompression" Click="MenuItemVerifyLcCompression_Click"></MenuItem>
+                <MenuItem Header="GC" Click="MenuItemGC_Click"></MenuItem>
+                <MenuItem Name="MenuItemTest" Click="MenuItemTest_Click" Header="Test"></MenuItem>
+                <MenuItem Name="MenuItemKill" Click="MenuItemKill_Click" Header="Kill"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="?">
+                <MenuItem Header="About" Name="About" Click="MenuItemAbout_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <TabControl>
+            <TabItem Header="Calc" >
+                <Border Padding="0,0,0,5">
+                    <DockPanel >
+                        <Border Padding="15,0,0,0"  DockPanel.Dock="Right" >
+                            <ListBox Name="ListBoxTb" ItemsSource="{Binding TbInfoList}" Width="150" Padding="2,0,0,0" Background="#181825" BorderBrush="#313244" BorderThickness="1" CornerRadius="6">
+                                <ListBox.Styles>
+                                    <Style Selector="ListBoxItem">
+                                        <Setter Property="Padding" Value="2" />
+                                        <Setter Property="MinHeight" Value="0" />
+                                    </Style>
+                                </ListBox.Styles>
+
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate DataType="local:TbInfo">
+                                        <Border Background="{Binding BackgroundBrush}" Padding="2">
+                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" />
+                                        </Border>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Border>
+                        <DockPanel DockPanel.Dock="Left">
+                            <DockPanel Name="DockPanelTbInfos" DockPanel.Dock="Top" Width="200" Margin="5,5,5,5" LastChildFill="False">
+                                <TextBlock Name="TextBlockTbDetailsName" DockPanel.Dock="Top" FontSize="16" FontWeight="Bold" Foreground="#89b4fa" Text="{ReflectionBinding Path=SelectedItem.Name,ElementName=ListBoxTb, FallbackValue='', TargetNullValue=''}">
+                                </TextBlock>
+                                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,0">
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="Nr:" Width="100"></TextBlock>
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="{ReflectionBinding Path=SelectedItem.NrString,ElementName=ListBoxTb, FallbackValue='', TargetNullValue=''}">
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,5,0,0">
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="Indices:" Width="100"></TextBlock>
+                                    <TextBlock Name="TextBlockTbDetailsIndices" FontSize="12" FontWeight="Normal" Text="{ReflectionBinding Path=SelectedItem.IndexString,ElementName=ListBoxTb, FallbackValue='', TargetNullValue=''}">
+                                    </TextBlock>
+                                </StackPanel>
+                                <TextBlock Name="TextBlockWtm" DockPanel.Dock="Top" FontSize="12" Margin="0,5,0,0" FontWeight="SemiBold" Foreground="#a6e3a1" Text="White to move:" ></TextBlock>
+                                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,0">
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="Max DTM win:" Width="100"></TextBlock>
+                                    <TextBlock Name="TextBlockTbDetailsWtmDtmWin" FontSize="12" FontWeight="Normal" Text="{ReflectionBinding Path=SelectedItem.WtmMaxWinInString,ElementName=ListBoxTb, FallbackValue='', TargetNullValue=''}">
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,0">
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="Max DTM lose:" Width="100"></TextBlock>
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="{ReflectionBinding Path=SelectedItem.WtmMaxLoseInString,ElementName=ListBoxTb, FallbackValue='', TargetNullValue=''}">
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,0">
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="Percent Win:" Width="100"></TextBlock>
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="{ReflectionBinding Path=SelectedItem.WtmPercentWinString,ElementName=ListBoxTb, FallbackValue='', TargetNullValue=''}">
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,0">
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="Percent Lose:" Width="100"></TextBlock>
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="{ReflectionBinding Path=SelectedItem.WtmPercentLoseString,ElementName=ListBoxTb, FallbackValue='', TargetNullValue=''}">
+                                    </TextBlock>
+                                </StackPanel>
+                                <TextBlock Name="TextBlockBtm" DockPanel.Dock="Top" FontSize="12" Margin="0,5,0,0" FontWeight="SemiBold" Foreground="#f38ba8" Text="Black to move:" ></TextBlock>
+                                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,0">
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="Max DTM win:" Width="100"></TextBlock>
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="{ReflectionBinding Path=SelectedItem.BtmMaxWinInString,ElementName=ListBoxTb, FallbackValue='', TargetNullValue=''}">
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,0">
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="Max DTM lose:" Width="100"></TextBlock>
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="{ReflectionBinding Path=SelectedItem.BtmMaxLoseInString,ElementName=ListBoxTb, FallbackValue='', TargetNullValue=''}">
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,0">
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="Percent Win:" Width="100"></TextBlock>
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="{ReflectionBinding Path=SelectedItem.BtmPercentWinString,ElementName=ListBoxTb, FallbackValue='', TargetNullValue=''}">
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,0">
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="Percent Lose:" Width="100"></TextBlock>
+                                    <TextBlock FontSize="12" FontWeight="Normal" Text="{ReflectionBinding Path=SelectedItem.BtmPercentLoseString,ElementName=ListBoxTb, FallbackValue='', TargetNullValue=''}">
+                                    </TextBlock>
+                                </StackPanel>
+                            </DockPanel>
+                            <DockPanel DockPanel.Dock="Top" LastChildFill="false"  Margin="0,50,0,0" Name="DockPanelChangeTbInfoProperties">
+                                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                                    <Button Name="ButtonCalcNow" Click="ButtonCalcNow_Click" Margin="5">Set as next to calculate</Button>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                                    <Button Margin="5" Content="{ReflectionBinding Path=SelectedItem.PieceGroupReorderWtm,ElementName=ListBoxTb, FallbackValue='', TargetNullValue=''}" Name="ButtonPieceGroupReorderWtm" Click="ButtonPieceGroupReorderWtm_Click"></Button>
+                                    <Button Margin="5" Content="{ReflectionBinding Path=SelectedItem.PieceGroupReorderBtm,ElementName=ListBoxTb, FallbackValue='', TargetNullValue=''}" Name="ButtonPieceGroupReorderBtm" Click="ButtonPieceGroupReorderBtm_Click"></Button>
+                                </StackPanel>
+                            </DockPanel>
+                            <Label></Label>
+                        </DockPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                            <Button Name="ButtonCalc" Click="Button_Click" Margin="5,0,0,0">Calc</Button>
+                            <Button Name="ButtonToKqk" Click="ButtonToKqk_Click" Margin="5,0,0,0" ToolTip.Tip="Set KQK as next to calculate.">KQK</Button>
+                            <Button Name="ButtonClear" Click="ButtonClear_Click" Margin="5,0,0,0">Clear Textbox</Button>
+                            <Label Margin="20,0,0,0" Name="LabelThreads">Threads:</Label>
+                            <Button Name="ButtonDecThread" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,0,0" Click="ButtonDecThread_Click" PointerPressed="ButtonDecThread_PointerPressed">-</Button>
+                            <TextBlock Name="TextBlockThreadCount" Width="25" VerticalAlignment="Center" TextAlignment="Center">1</TextBlock>
+                            <Button Name="ButtonIncThread" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,0,0" Click="ButtonIncThread_Click" PointerPressed="ButtonIncThread_PointerPressed">+</Button>
+                            <Grid Name="GridForThreading" Margin="10,2,0,2"></Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5,5,5,0" Name="StackPanelDebug">
+                            <CheckBox Margin="10,0,10,0" VerticalAlignment="Center" Name="CheckBoxTrack">Track:</CheckBox>
+                            <TextBox Name="TextBoxTrack" MinWidth="250" ToolTip.Tip="Example: KPKP C2 A6 A5 B5 WTM B6    (B6 is EP cap dest)" Margin="0,0,10,0" >KPKP C2 A6 A1 B7 WTM</TextBox>
+                            <Button Name="ButtonGetRes" Click="ButtonGetRes_Click" >GetRes</Button>
+                        </StackPanel>
+                        <StackPanel DockPanel.Dock="Top" Margin="5,5,5,5" Orientation="Horizontal">
+                            <Label VerticalContentAlignment="Center" Margin="0,0,10,0">Stop:</Label>
+                            <RadioButton Margin="0,0,10,0" Name="RadioButtonStopTb" VerticalAlignment="Center" ToolTip.Tip="Stop when current Tablebase is finished" IsCheckedChanged="RadioButtonStopTb_IsCheckedChanged">TB</RadioButton>
+                            <RadioButton Margin="0,0,10,0" Name="RadioButtonStop4" VerticalAlignment="Center" IsChecked="True" ToolTip.Tip="Stop when all 4 men Tablebases finishes" IsCheckedChanged="RadioButtonStop4_IsCheckedChanged">4</RadioButton>
+                            <RadioButton Margin="0,0,10,0" Name="RadioButtonStop5" VerticalAlignment="Center"  ToolTip.Tip="Stop when all 5 men Tablebases finishes" IsCheckedChanged="RadioButtonStop5_IsCheckedChanged">5</RadioButton>
+                            <RadioButton Margin="0,0,10,0" Name="RadioButtonNever" VerticalAlignment="Center" ToolTip.Tip="Never stop calculation" IsCheckedChanged="RadioButtonNever_IsCheckedChanged">Never</RadioButton>
+                            <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Name="CheckBoxPause" IsCheckedChanged="CheckBoxPause_IsCheckedChanged">Pause</CheckBox>
+                            <CheckBox VerticalAlignment="Center" Margin="5,0,0,0" Name="CheckBoxShutdown" ToolTip.Tip="Shutdown computer when calculation is finished" >Shutdown</CheckBox>
+                        </StackPanel>
+                        <DockPanel LastChildFill="True" DockPanel.Dock="Bottom" Margin="0,10,0,0" Name="DockPanelProgress" Opacity="0">
+                            <Label Name="LabelProgress" DockPanel.Dock="Left" Width="80"></Label>
+                            <ProgressBar Height="10" Name="ProgressBar" HorizontalAlignment="Stretch" VerticalAlignment="Center" Maximum="100"></ProgressBar>
+                        </DockPanel>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                            <SelectableTextBlock Name="TextBox" FontFamily="Cascadia Code, Consolas, DejaVu Sans Mono, Liberation Mono, monospace" TextWrapping="Wrap" Padding="5"/>
+                        </ScrollViewer>
+                    </DockPanel>
+                </Border>
+            </TabItem>
+            <TabItem Header="Board">
+                <local:UserControlCb></local:UserControlCb>
+            </TabItem>
+            <TabItem Header="Settings" Name="TabItemSettings">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <Label Width="270">RAM to use:</Label>
+                        <TextBox Width="100" Name="TextBoxRam" TextChanged="TextBoxRam_TextChanged">500</TextBox>
+                    </StackPanel>
+                    <DockPanel LastChildFill="True">
+                        <TextBlock Margin="300,10,0,20" TextWrapping="Wrap">Specify the amount of RAM smTablebases to use.
+                            The value specifies the amount of MB reserved for the DataChunks. Other parts might also use some RAM but not much.
+                            A low value will reduce the allocation and therefore the speed.
+                            A high value will might cause swapping from the OS and slow down the speed.
+                            If the amount is lower then the minimum requirement smTablebases will ignore the value and allocate the minimum required.
+                        </TextBlock>
+                    </DockPanel>
+                    <DockPanel LastChildFill="True" Margin="0,10,0,0">
+                        <Label Width="270" DockPanel.Dock="Left">Temp Folder:</Label>
+                        <Button DockPanel.Dock="Right" Name="ButtonSelectTmpFolder" Margin="5,0,0,0" Click="ButtonSelectTmpFolder_Click">...</Button>
+                        <Button DockPanel.Dock="Right" Name="ButtonClearTmpFolder" Margin="5,0,0,0" Click="ButtonClearTmpFolder_OnClick">Clear</Button>
+                        <TextBox Name="TextBoxTmpFolder" IsEnabled="False"></TextBox>
+                    </DockPanel>
+                    <DockPanel LastChildFill="True">
+                        <TextBlock Margin="300,10,0,20" TextWrapping="Wrap" >Specify a folder to store temporary data if RAM is full.
+                            If not specified the Application Folder will be used. The final Tablebases will anyway stored in the Application Folder.
+                            If you need to swap data to a disk and have a fast one specify it here.
+                        </TextBlock>
+                    </DockPanel>
+                    <DockPanel Margin="0,10,0,0" LastChildFill="False">
+                        <Label Width="270" DockPanel.Dock="Left">Compression Threads:</Label>
+                        <Button DockPanel.Dock="Left" Name="ButtonDecreaseCompressionThreads" Width="20" Margin="5,2,0,2" Click="ButtonDecreaseCompressionThreads_Click" PointerPressed="ButtonDecreaseCompressionThreads_PointerPressed">-</Button>
+                        <TextBox Name="TextBoxThreadCountCompression" Margin="10,2,10,2"  IsEnabled="False" DockPanel.Dock="Left" Width="40"></TextBox>
+                        <Button DockPanel.Dock="Left" Name="ButtonIncreaseCompressionThreads" Width="20" Margin="5,2,0,2" Click="ButtonIncreaseCompressionThreads_Click" PointerPressed="ButtonIncreaseCompressionThreads_PointerPressed">+</Button>
+                    </DockPanel>
+                    <DockPanel LastChildFill="True">
+                        <TextBlock Margin="300,10,0,20" TextWrapping="Wrap" >LC compression needs much memory per Thread on top. Limit thread count during compression with this option.
+                        </TextBlock>
+                    </DockPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Log">
+                <DockPanel>
+                    <DockPanel DockPanel.Dock="Top" LastChildFill="False">
+                        <Button Name="ButtonLogClear">Clear</Button>
+                    </DockPanel>
+                    <TextBox Name="TextBoxLog" FontFamily="Lucida Console" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto"></TextBox>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>
